@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular SSR Project';
+  constructor(private swUpdate: SwUpdate) {
+    this.swUpdate.available.subscribe(event => {
+      window.location.reload();
+    });
+  }
 }

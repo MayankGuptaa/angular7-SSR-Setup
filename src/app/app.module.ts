@@ -17,6 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { MatButtonModule } from '@angular/material';
     BrowserAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
