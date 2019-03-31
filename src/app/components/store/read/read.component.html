@@ -1,0 +1,10 @@
+
+<div *ngIf="tutorials">
+  <ul>
+    <li  (click)="delTutorial(i)"  *ngFor="let tutorial of tutorials | async">
+      <strong><a >{{ tutorial.name }}</a>
+        </strong> <span>{{tutorial.url}}</span>
+    </li>
+  </ul>
+
+</div>

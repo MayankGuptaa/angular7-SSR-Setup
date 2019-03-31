@@ -1,4 +1,24 @@
-# angular7-SSR-Setup
+# Angular7 Complete Setup
+
+---------------------------------------
+
+Angular Setup With:-
+
+1. Server-side Rendering (SSR): An intro to Angular Universal
+
+2. Angular Material
+
+3. Angular Flex Layout
+
+4. SCSS with ( Responsive Layout SCSS/mixin.scss )
+
+5. Routing
+
+6. Service Workers & PWA
+
+7. Ngrx/store
+
+-----------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 

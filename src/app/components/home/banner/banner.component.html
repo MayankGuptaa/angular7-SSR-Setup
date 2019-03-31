@@ -1,0 +1,30 @@
+<div>
+    <strong>Cart:</strong> {{counter}}
+</div>
+
+<div fxLayout="row column" fxLayoutAlign="space-between start">
+  <div class="prod" *ngFor="let data of productTest; let i = index">
+      <div *ngIf="data">
+          {{i + 1}}
+          <strong>{{data.title}}</strong> <span>{{data.content}}</span>
+          <button (click)="addToCart(data, i)">Add to Cart</button>
+          <div>
+            <button (click)="removeProduct(data, i)">-</button>
+            <input type="number" [(ngModel)]="data.quantity">
+            <button (click)="addProduct(data, i)">+</button>
+          </div>
+      </div>
+  </div>
+</div>
+<br>
+<h3>Add To cart Item</h3>
+<br>
+<div fxLayout="row column" fxLayoutAlign="space-between start">
+    <div class="prod" *ngFor="let data of cartItems; let i = index">
+        <button (click)="removeItem(i)">Remove Item</button>
+        <div *ngIf="data">
+            <strong>{{data.title}}</strong> <span>{{data.content}}</span>
+        </div>
+        <div>Quantity: {{data.quantity}}</div>
+    </div>
+</div>

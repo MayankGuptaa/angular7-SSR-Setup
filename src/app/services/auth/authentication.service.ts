@@ -1,32 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor( private cookieService: CookieService ) { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   private key = `${environment.APP_ID}-user`;
   private user = new BehaviorSubject(null);
   currentUser = this.user.asObservable();
 
-  isUserLogin: boolean = this.cookieService.check(this.key);
-  getCookieValue: string = this.cookieService.get(this.key);
-
   setCookie(data) {
     if (data && Object.keys(data).length > 0) {
-    this.cookieService.set(this.key, data);
-    this.user.next(data);
-    console.log(this.getCookieValue);
+      this.document.cookie = `${this.key} = ${data}`;
+      this.user.next(data);
     }
   }
 
   removeCookie() {
-    this.cookieService.delete(this.key);
+    this.document.cookie = `${this.key} = '', -1`;
     return true;
   }
 
